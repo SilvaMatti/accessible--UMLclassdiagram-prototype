@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<!-- JQuery -->	
+<script src="js/jquery.min.js"></script>
+
+<!-- Minified JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+<!-- my JavaScript -->
+<script src="js/script.js"></script>
+	<script type="text/javascript">
+var active;
+$(document).keydown(function(e){
+    active = $('td.active').removeClass('active');
+    var x = active.index();
+    var y = active.closest('tr').index();
+    if (e.keyCode == 37) { 
+       x--;
+    }
+    if (e.keyCode == 38) {
+        y--;
+    }
+    if (e.keyCode == 39) { 
+        x++
+    }
+    if (e.keyCode == 40) {
+        y++
+    }
+    active = $('tr').eq(y).find('td').eq(x).addClass('active');
+});
+	</script>
+
+</head>
+<body>
+	<table border="1">
+        <tr>
+            <td class="active">&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>$nbsp;</td>
+            <td>$nbsp;</td>
+            <td>$nbsp;</td>
+            <td>$nbsp;</td>
+            <td>$nbsp;</td>
+        </tr>
+        <tr>
+            <td>$nbsp;</td>
+            <td>$nbsp;</td>
+            <td>$nbsp;</td>
+            <td>$nbsp;</td>
+            <td>$nbsp;</td>
+        </tr>
+        <tr>
+            <td>$nbsp;</td>
+            <td>$nbsp;</td>
+            <td>$nbsp;</td>
+            <td>$nbsp;</td>
+            <td>$nbsp;</td>
+        </tr>
+        <tr>
+            <td>$nbsp;</td>
+            <td>$nbsp;</td>
+            <td>$nbsp;</td>
+            <td>$nbsp;</td>
+            <td>$nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+	</table>
+</body>
+</html>

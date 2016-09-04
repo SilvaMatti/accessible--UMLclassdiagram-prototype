@@ -1,0 +1,32 @@
+.icon {
+	max-width: 150px;
+	margin: 0 auto;
+	display: block;
+	
+}
+
+.services section {
+	text-align: center;
+}
+
+
+.bordered {
+border: 1px solid #ccc;
+}
+/*
+.focused {
+    border: 1px solid aqua;
+}
+*/
+/* for table-test-2 */
+td.active{
+    background: red;
+}
+
+td{
+	width:100px
+}
+
+div{
+	margin-bottom: 50px;
+}

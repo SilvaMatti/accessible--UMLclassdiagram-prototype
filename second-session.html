@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<title>Bootstrap</title>
+
+</head>
+<body>
+<!-- progress bar-->
+<div class="services container">
+	<h1>Accessiable UML</h1>
+	<div class="progress">
+		<div class="progress-bar progress-bar-success" style="width: 25%">
+	  	</div>
+	  	<div class="progress-bar progress-bar-success" style="width: 25%">
+	 	</div>
+	 	<div class="progress-bar progress-bar-success" style="width: 25%">
+	 	3/4
+	 	</div>
+	</div>
+
+
+<!-- images -->
+	<div class="focusable" tabindex="-1">
+		<div class="row focusable" tabindex="-1">
+			<section class="col-md-3 focusable focused" tabindex="1" id="unscripted">
+				<img class="icon" src="images/training.png">
+				<b>Training Session</b>
+			</section>
+			<section class="col-md-3 focusable" tabindex="-1" id="scripted">
+				<img class="icon" src="images/uml-512.png">
+				<b>First Session</b>
+			</section>
+			</section>
+			<section class="col-md-3 focusable" tabindex="-1" id="scripted1">
+				<img class="icon" src="images/uml-512.png">
+				<b>Second Session</b>
+			</section>
+			</section>
+			<section class="col-md-3 focusable" tabindex="-1" id="scripted2">
+				<img class="icon" src="images/logout-128.png">
+				<b>Debriefing Session</b>
+			</section>
+		</div>
+		<div class="row focusable" tabindex="-1">
+			<section class="col-md-3 focusable" tabindex="-1" id="scripted2">
+				<img class="icon" src="images/logout-128.png">
+				<b>Debriefing Session</b>
+			</section>
+		</div>
+	</div>
+	<!--images-->
+	<div class="focusable" tabindex="-1">
+		<table  class="focusable" tabindex="-1" border="1">
+        <tr>
+            <td class="focusable" tabindex="-1" empty-cells= "hide">&nbsp;</td>
+            <td class="focusable" tabindex="-1">&nbsp;</td>
+            <td class="focusable" tabindex="-1">&nbsp;</td>
+            <td class="focusable" tabindex="-1">&nbsp;</td>
+            <td class="focusable" tabindex="-1">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="focusable" tabindex="-1">&nbsp;</td>
+            <td class="focusable" tabindex="-1" colspan="2">&nbsp;</td>
+            <td class="focusable" tabindex="-1" >&nbsp;</td>
+            <td class="focusable" tabindex="-1">&nbsp;</td>
+            <td class="focusable" tabindex="-1">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="focusable" tabindex="-1">$nbsp;</td>
+            <td class="focusable" tabindex="-1">$nbsp;</td>
+            <td class="focusable" tabindex="-1">$nbsp;</td>
+            <td class="focusable" tabindex="-1">$nbsp;</td>
+            <td class="focusable" tabindex="-1">$nbsp;</td>
+        </tr>
+        <tr>
+            <td class="focusable" tabindex="-1">$nbsp;</td>
+            <td class="focusable" tabindex="-1">$nbsp;</td>
+            <td class="focusable" tabindex="-1">$nbsp;</td>
+            <td class="focusable" tabindex="-1">$nbsp;</td>
+            <td class="focusable" tabindex="-1">$nbsp;</td>
+        </tr>
+        <tr>
+            <td class="focusable" tabindex="-1">$nbsp;</td>
+            <td class="focusable" tabindex="-1">$nbsp;</td>
+            <td class="focusable" tabindex="-1">$nbsp;</td>
+            <td class="focusable" tabindex="-1">$nbsp;</td>
+            <td class="focusable" tabindex="-1">$nbsp;</td>
+        </tr>
+        <tr>
+            <td class="focusable" tabindex="-1">$nbsp;</td>
+            <td class="focusable" tabindex="-1">$nbsp;</td>
+            <td class="focusable" tabindex="-1">$nbsp;</td>
+            <td class="focusable" tabindex="-1">$nbsp;</td>
+            <td class="focusable" tabindex="-1">$nbsp;</td>
+        </tr>
+        <tr>
+            <td class="focusable" tabindex="-1">&nbsp;</td>
+            <td class="focusable" tabindex="-1">&nbsp;</td>
+            <td class="focusable" tabindex="-1">&nbsp;</td>
+            <td class="focusable" tabindex="-1">&nbsp;</td>
+            <td class="focusable" tabindex="-1">&nbsp;</td>
+        </tr>
+	</table>
+	</div>
+</div>
+<!-- pager -->
+<nav>
+  <ul class="pager">
+    <li><a href="first-session.html">Previos</a></li>
+    <li><a href="debrief-session.html">  Next  </a></li>
+  </ul>
+</nav>
+
+<!-- JQuery -->	
+<script src="js/jquery.min.js"></script>
+<script>
+	// init
+	$('.focused').focus();
+	// actual code
+	$(document).keydown(function(e){  
+
+	    if (e.keyCode == 37) { // left
+	        if($('.focused').prev('.focusable').length)
+	            $('.focused').removeClass('focused').prev('.focusable').focus().addClass('focused');
+	    }
+	    if (e.keyCode == 39) { // right
+	        if($('.focused').next('.focusable').length)
+	            $('.focused').removeClass('focused').next('.focusable').focus().addClass('focused');
+	    }
+	    //esc 27
+	     if (e.keyCode == 27) { // esc
+	        if($('.focused').parents().first('.focusable').length)
+	            $('.focused').removeClass('focused').parents().first('.focusable').focus().addClass('focused');
+	    }
+	    // enter 13
+	    if (e.keyCode == 13) { // enter
+	        if($('.focused').children().first('.focusable').length)
+	            $('.focused').removeClass('focused').children().first('.focusable').focus().addClass('focused');
+	    }
+	    //Up 38
+	    var active;
+	    if (e.keyCode == 38) {
+	    	active = $('td.focused').removeClass('focused');
+	    	var x = active.index();
+			var y = active.closest('tr').index();
+			y--;
+			$('tr').eq(y).find('td.focusable').eq(x).focus().addClass('focused');
+		}
+	    //down 40
+	    if (e.keyCode == 40) {
+	    	active = $('td.focused').removeClass('focused');
+	    	var x = active.index();
+			var y = active.closest('tr').index();
+			y++;
+			$('tr').eq(y).find('td.focusable').eq(x).focus().addClass('focused');
+		}
+
+	});
+	$('td').mouseover(function () {
+    $(this).siblings().css('background-color', '#EAD575');
+    var ind = $(this).index();
+    $('td:nth-child(' + (ind + 1) + ')').css('background-color', '#EAD575');
+});
+$('td').mouseleave(function () {
+    $(this).siblings().css('background-color', '');
+    var ind = $(this).index();
+    $('td:nth-child(' + (ind + 1) + ')').css('background-color', '');
+});
+
+</script>
+<!-- Minified JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+<!-- my JavaScript -->
+<script src="js/script.js"></script>
+</body>
+</html>

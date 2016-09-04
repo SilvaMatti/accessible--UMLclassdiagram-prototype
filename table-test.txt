@@ -1,0 +1,58 @@
+<html>
+<head>
+<script type="text/javascript">
+function myTest(e,oben,links,unten,rechts)
+{
+  if (!e) e=window.event;
+  var selectArrowKey;
+  switch(e.keyCode)
+  {
+  case 37:
+    // Key links.
+    selectArrowKey = links;
+    break;
+  case 38:
+    // Key oben.
+    selectArrowKey = oben;
+    break;
+  case 39:
+    // Key rechts.
+    selectArrowKey = rechts;
+    break;
+  case 40:
+    // Key unten.
+    selectArrowKey = unten;
+    break;
+  }
+  if (!selectArrowKey) return;
+  var controls = document.getElementsByName(selectArrowKey);
+  if (!controls) return;
+  if (controls.length != 1) return;
+  controls[0].focus();
+}
+</script>
+
+</head>
+<body>
+<table border="1" cellpadding="0" cellspacing="0">
+<tr>
+  <td><input name="obenLinks" type="text" onkeydown="myTest(event,undefined,undefined,'mitteLinks','obenMitte')"></td>
+  <td><input name="obenMitte" type="text" onkeydown="myTest(event,undefined,'obenLinks','mitteMitte','obenRechts')"></td>
+  <td><input name="obenRechts" type="text" onkeydown="myTest(event,undefined,'obenMitte','mitteRechts',undefined)"></td>
+</tr>
+<tr>
+  <td><input name="mitteLinks" type="text" onkeydown="myTest(event,'obenLinks',undefined,'untenLinks','mitteMitte')"></td>
+  <td><input name="mitteMitte" type="text" onkeydown="myTest(event,'obenMitte','mitteLinks','untenMitte','mitteRechts')"></td>
+  <td><input name="mitteRechts" type="text" onkeydown="myTest(event,'obenRechts','mitteMitte','untenRechts',undefined)"></td>
+</tr>
+<tr>
+  <td><input name="untenLinks" type="text" onkeydown="myTest(event,'mitteLinks',undefined,undefined,'untenMitte')"></td>
+  <td><input name="untenMitte" type="text" onkeydown="myTest(event,'mitteMitte','untenLinks',undefined,'untenRechts')"></td>
+  <td><input name="untenRechts" type="text" onkeydown="myTest(event,'mitteRechts','untenMitte',undefined,undefined)"></td>
+</tr>
+</table>
+
+</body>
+</html>
+
+
