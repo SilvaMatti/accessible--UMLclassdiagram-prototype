@@ -202,14 +202,16 @@
 			}
 		}
 		// 1 case there were two columns and user choose 1
-		if (e.keyCode == 49 && typeof nextstep !== 'undefined'){
+		//if (e.keyCode == 49 && typeof nextstep == 2){
+			if (e.keyCode == 49 && nextstep == 2){
 			$('td.focused').removeClass('focused');
 			var xx = myArray[2];
 			$('tr').eq(row).find('td.focusable.' + xx).focus().addClass('focused');
 			colmatches = 0;
 		}
 		// 2 case there were two columns and user choose 2
-		if (e.keyCode == 50 && typeof nextstep !== 'undefined'){
+		//if (e.keyCode == 50 && typeof nextstep !== 'undefined'){
+			if (e.keyCode == 49 && nextstep == 2){
 			$('td.focused').removeClass('focused');
 			var xx = myArray[3];
 			$('tr').eq(row).find('td.focusable.' + xx).focus().addClass('focused');
@@ -217,7 +219,8 @@
 		}
 
 		// 1 case there were two rows and user choose 1
-		if (e.keyCode == 49 && typeof nextstepr !== 'undefined'){
+		//if (e.keyCode == 49 && typeof nextstepr !== 'undefined'){
+			if (e.keyCode == 49 && nextstepr==2){
 			$('td.focused').removeClass('focused');
 			yy = myArray[1].match(/\d/g);// getting only the number
 			//$('tr').eq(yy).find('td.focusable.' + col).focus().addClass('focused');
@@ -225,7 +228,8 @@
 			colmatches = 0;
 		}
 		// 2 case there were two rows and user choose 2
-		if (e.keyCode == 50 && typeof nextstepr !== 'undefined'){
+		//if (e.keyCode == 50 && typeof nextstepr !== 'undefined'){
+			if (e.keyCode == 49 && nextstepr==2){
 			$('td.focused').removeClass('focused');
 			yy = myArray[1].match(/\d/g);// getting only the number
 			$('tr').eq(yy).find('td.focusable.' + col).focus().addClass('focused');
