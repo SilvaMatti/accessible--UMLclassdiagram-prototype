@@ -184,8 +184,8 @@
 	 	        if (rowmatches == 1)
 		    	{
 					active = $('td.focused').removeClass('focused');
-					xx = parseInt(colArr[0].match(/\d/g))-1; // col only number
-					yy = parseInt(rowArr[0].match(/\d/g)); // row only number +1
+					xx = parseInt(colArr[0].match(/\d/g))-1; // col only number -1
+					yy = parseInt(rowArr[0].match(/\d/g)); // row only number 
 					$("td.focusable.col"+xx+".row"+yy).focus().addClass('focused');
 					window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
 					rowmatches = 0;
@@ -199,7 +199,23 @@
 	    }
 	    if (e.keyCode == 39) { // right
 	        if($('.focused').next('.focusable').length)
-	            $('.focused').removeClass('focused').next('.focusable').focus().addClass('focused');
+	        {
+	        	if (rowmatches == 1)
+		    	{
+					active = $('td.focused').removeClass('focused');
+					xx = parseInt(colArr[colArr.length-1].match(/\d/g))+1; // col only number +1
+					yy = parseInt(rowArr[colArr.length-1].match(/\d/g)); // row only number 
+					$("td.focusable.col"+xx+".row"+yy).focus().addClass('focused');
+					window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
+					rowmatches = 0;
+				}
+				if (rowmatches == 2) {
+					nextstepr = true;
+					col = parseInt(colArr[colArr.length-1].match(/\d/g))+1; // col only number
+					window.alert(" rowmatches" +rowmatches );
+				}      
+	            
+	        }
 	    }	    
 	    //Up 38
 	    if (e.keyCode == 38) 

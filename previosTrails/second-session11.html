@@ -1,0 +1,322 @@
+<!-- inhereted from second-session4 and equal to 6-->
+<!-- up and down working all borders working and left and right working.. Perfect-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<title>Bootstrap</title>
+
+</head>
+<body>
+<!-- progress bar-->
+<div class="services container">
+	<h1>Accessiable UML</h1>
+	<div class="progress">
+		<div class="progress-bar progress-bar-success" style="width: 25%">
+	  	</div>
+	  	<div class="progress-bar progress-bar-success" style="width: 25%">
+	 	</div>
+	 	<div class="progress-bar progress-bar-success" style="width: 25%">
+	 	3/4
+	 	</div>
+	</div>
+
+
+<!-- images -->
+	<div class="focusable" tabindex="-1">
+		<div class="row">
+			<section class="col-md-3 focusable"  id="unscripted">
+				<img class="icon" src="images/training.png">
+				<b>Training Session</b>
+			</section>
+			<section class="col-md-3" id="scripted">
+				<img class="icon" src="images/uml-512.png">
+				<b>First Session</b>
+			</section>
+			</section>
+			<section class="col-md-3" id="scripted1" >
+				<img class="icon" src="images/uml-512.png">
+				<b>Second Session</b>
+			</section>
+			</section>
+			<section class="col-md-3" id="scripted2">
+				<img class="icon" src="images/logout-128.png">
+				<b>Debriefing Session</b>
+			</section>
+		</div>
+		
+	</div>
+	<!--images-->
+	<div class="focusable" tabindex="1">
+		<table  id = "uml" class="focusable tablegrid" tabindex="-1" border="1">
+        <tr id = "row1">
+            <td class="focusable row1 col1  focused" tabindex="-1" empty-cells= "hide">&nbsp;</td>
+            <td class="focusable row1 col2" tabindex="-1">&nbsp;</td>
+            <td class="focusable row1 col3" tabindex="-1">&nbsp;</td>
+            <td class="focusable row1 col4" tabindex="-1">&nbsp;</td>
+            <td class="focusable row1 col5" tabindex="-1">&nbsp;</td>
+        </tr>
+        <tr id="row2">
+            <td class="focusable row2 col1" tabindex="-1">&nbsp;</td>
+            <td class="focusable row2 col2 col3" tabindex="-1" colspan="2">&nbsp;</td>
+            <td class="focusable row2 col4" tabindex="-1" >&nbsp;</td>
+            <td class="focusable row2 col5" tabindex="-1">&nbsp;</td>
+        </tr>
+        <tr id = "row3">
+            <td class="focusable row3 col1" tabindex="-1">&nbsp;</td>
+            <td class="focusable row3 col2" tabindex="-1">&nbsp;</td>
+            <td class="focusable row3 col3" tabindex="-1">&nbsp;</td>
+            <td class="focusable row3 col4" tabindex="-1">&nbsp;</td>
+            <td class="focusable row3 col5" tabindex="-1">&nbsp;</td>
+        </tr>
+        <tr id = "row4">
+            <td class="focusable row4 col1" tabindex="-1">&nbsp;</td>
+            <td class="focusable row4 col2" tabindex="-1">&nbsp;</td>
+            <td class="focusable row4 col3" tabindex="-1">&nbsp;</td>
+            <td class="focusable row4 col4" tabindex="-1">&nbsp;</td>
+            <td class="focusable row4 col5" tabindex="-1">&nbsp;</td>
+        </tr>
+        <tr id = "row5">
+            <td class="focusable row5 col1" tabindex="-1">&nbsp;</td>
+            <td class="focusable row5 col2" tabindex="-1">&nbsp;</td>
+            <td class="focusable row5 col3" tabindex="-1">&nbsp;</td>
+            <td class="focusable row5 col4" tabindex="-1">&nbsp;</td>
+            <td class="focusable row5 col5" tabindex="-1">&nbsp;</td>
+        </tr>
+        <tr id = "row6">
+            <td class="focusable row6 col1" tabindex="-1">&nbsp;</td>
+            <td class="focusable row6 row7 col2" tabindex="-1" rowspan="2">&nbsp;</td>
+            <td class="focusable row6 col3" tabindex="-1">&nbsp;</td>
+            <td class="focusable row6 col4" tabindex="-1">&nbsp;</td>
+            <td class="focusable row6 col5" tabindex="-1">&nbsp;</td>
+        </tr>
+        <tr id = "row7">
+            <td class="focusable row7 col1" tabindex="-1">&nbsp;</td>
+            <td class="focusable row7 col3" tabindex="-1">&nbsp;</td>
+            <td class="focusable row7 col4" tabindex="-1">&nbsp;</td>
+            <td class="focusable row7 col5" tabindex="-1">&nbsp;</td>
+        </tr>
+        <tr id = "row8">
+            <td class="focusable row8 col1" tabindex="-1">&nbsp;</td>
+            <td class="focusable row8 col2" tabindex="-1">&nbsp;</td>
+            <td class="focusable row8 col3" tabindex="-1">&nbsp;</td>
+            <td class="focusable row8 col4" tabindex="-1">&nbsp;</td>
+            <td class="focusable row8 col5" tabindex="-1">&nbsp;</td>
+        </tr>
+	</table>
+	</div>
+
+	<!-- pager -->
+	<nav>
+	  <ul class="pager">
+	    <li><a href="first-session.html">Previos</a></li>
+	    <li><a href="debrief-session.html">  Next  </a></li>
+	  </ul>
+	</nav>
+</div>
+
+
+<!-- JQuery -->	
+<script src="js/jquery.min.js"></script>
+<script>
+	var nextstep = false, nextstepr = false;
+	//table length
+	var TLength = document.getElementById("uml").rows.length;
+	// init
+	$('.focused').focus();
+	// actual code
+	
+	$(document).keydown(function(e){  
+		var colmatches = 0, rowmatches = 0, x = 0, y = 0;
+		var colArr = [], rowArr = [];
+		myArray = $(".focused").attr("class").split(' ');
+			
+		for (var i in myArray) {
+			if (myArray[i].includes("col"))
+			{
+				colArr.push(myArray[i]);
+				colmatches++;
+			}
+			if (myArray[i].includes("row"))
+			{
+				rowArr.push(myArray[i]);
+				rowmatches++;
+			}
+  			
+		}
+		
+		/*
+		$.each(myArray, function() {
+		    colmatch = this.match(/(^|\s)col\d(\s|$)/);
+		    if (colmatch !== null) {
+		    	colmatches++;
+		    }
+		    rowmatch = this.match(/(^|\s)row\d(\s|$)/);
+		    if (rowmatch !== null) {
+		    	rowmatches++;
+		    }
+		})
+		*/
+		/*
+		//esc 27
+	     if (e.keyCode == 27) { // esc
+	        if($('.focused').parents().first('.focusable').length)
+	            $('.focused').removeClass('focused').parents().first('.focusable').focus().addClass('focused');
+	    }
+	    // enter 13
+	    if (e.keyCode == 13) { // enter
+	        if($('.focused').children().first('.focusable').length)
+	            $('.focused').removeClass('focused').children().first('.focusable').focus().addClass('focused');
+	    }
+	    */
+	    if (e.keyCode == 37) { // left
+	    /*
+	        if($('.focused').prev('.focusable').length)
+	            $('.focused').removeClass('focused').prev('.focusable').focus().addClass('focused');
+	        */
+	        if($('.focused').prev('.focusable').length)
+	        {
+	 	        if (rowmatches == 1)
+		    	{
+					active = $('td.focused').removeClass('focused');
+					xx = parseInt(colArr[0].match(/\d/g))-1; // col only number -1
+					yy = parseInt(rowArr[0].match(/\d/g)); // row only number 
+					$("td.focusable.col"+xx+".row"+yy).focus().addClass('focused');
+					window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
+					rowmatches = 0;
+				}
+				if (rowmatches == 2) {
+					nextstepr = true;
+					col = parseInt(colArr[0].match(/\d/g))-1; // col only number
+					window.alert(" rowmatches" +rowmatches );
+				}       	
+	        }
+	    }
+	    if (e.keyCode == 39) { // right
+	        if($('.focused').next('.focusable').length)
+	        {
+	        	if (rowmatches == 1)
+		    	{
+					active = $('td.focused').removeClass('focused');
+					xx = parseInt(colArr[colArr.length-1].match(/\d/g))+1; // col only number +1
+					yy = parseInt(rowArr[colArr.length-1].match(/\d/g)); // row only number 
+					$("td.focusable.col"+xx+".row"+yy).focus().addClass('focused');
+					window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
+					rowmatches = 0;
+				}
+				if (rowmatches == 2) {
+					nextstepr = true;
+					col = parseInt(colArr[colArr.length-1].match(/\d/g))+1; // col only number
+					window.alert(" rowmatches" +rowmatches );
+				}      
+	            
+	        }
+	    }	    
+	    //Up 38
+	    if (e.keyCode == 38) 
+	    {
+	    	if (-1<$('td.focused').closest('tr').index()-1)
+    		if (colmatches == 1)
+			{
+				active = $('td.focused').removeClass('focused');
+				xx = parseInt(colArr[0].match(/\d/g)); // col only number
+				yy = parseInt(rowArr[0].match(/\d/g))-1; // row only number -1
+				$("td.focusable.col"+xx+".row"+yy).focus().addClass('focused');
+				window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx+ " colarr:"+colArr+"  rowarr:"+rowArr);
+				colmatches = 0;
+			}
+			if (colmatches == 2){
+				nextstep = true;
+				row = parseInt(rowArr[0].match(/\d/g))-1; // row only number -1
+				window.alert(" colmatches" +colmatches + "  y " + yy );
+			} 
+		}
+	    //down 40
+	    if (e.keyCode == 40) {
+	    	if (TLength>$('td.focused').closest('tr').index()+1)
+	    	{
+	    	if (colmatches == 1)
+	    	{
+				active = $('td.focused').removeClass('focused');
+				xx = parseInt(colArr[colArr.length-1].match(/\d/g)); // col only number
+				yy = parseInt(rowArr[rowArr.length-1].match(/\d/g))+1; // row only number +1
+				$("td.focusable.col"+xx+".row"+yy).focus().addClass('focused');
+				window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
+				colmatches = 0;
+			}
+			if (colmatches == 2) {
+				nextstep = true;
+				row = parseInt(rowArr[rowArr.length-1].match(/\d/g))+1; // row only number +1
+				window.alert(" colmatches" +colmatches + "  y " + yy );
+			}
+			}
+		}
+		// 1 case there were two columns and user choose 1 , up and down
+		if (e.keyCode == 49 &&  nextstep &&  !nextstepr){
+			$('td.focused').removeClass('focused');
+			var xx = parseInt(colArr[0].match(/\d/g)); // col only number
+			$("td.focusable.col"+xx+".row"+row).focus().addClass('focused');
+			window.alert(" colmatches" +colmatches + "  y " + row + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr) ;
+			colmatches = 0;
+			nextstep = false;
+			nextstepr = false;
+
+		}
+		// 2 case there were two columns and user choose 2 , up and down
+		if (e.keyCode == 50 &&  nextstep &&  !nextstepr){
+			$('td.focused').removeClass('focused');
+			var xx = parseInt(colArr[colArr.length-1].match(/\d/g)); // col only number
+			$("td.focusable.col"+xx+".row"+row).focus().addClass('focused');
+			window.alert(" colmatches" +colmatches + "  y " + row + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr) ;
+			colmatches = 0;
+			nextstep = false;
+			nextstepr = false;
+		}
+
+		// 1 case there were two rows and user choose 1 , left and write
+		if (e.keyCode == 49 && !nextstep && nextstepr){
+			$('td.focused').removeClass('focused');
+			var yy = parseInt(rowArr[0].match(/\d/g)); // row only number
+			$("td.focusable.col"+col+".row"+yy).focus().addClass('focused');
+			window.alert(" jnfjdsfjkscolmatches" +colmatches + "  y " + yy + "  x " + col + " colarr:"+colArr+"  rowarr:"+rowArr[0].match(/\d/g)
+				) ;
+			rowmatches = 0;
+			nextstep = false;
+			nextstepr = false;
+		}
+		// 2 case there were two rows and user choose 2 , left and write
+		if (e.keyCode == 50 &&  !nextstep &&  nextstepr){
+			$('td.focused').removeClass('focused');
+			var yy = parseInt(rowArr[rowArr.length-1].match(/\d/g)); // row only number
+			$("td.focusable.col"+col+".row"+yy).focus().addClass('focused');
+			window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + col + " colarr:"+colArr+"  rowarr:"+rowArr) ;
+			rowmatches = 0;
+			nextstep = false;
+			nextstepr = false;
+		}
+
+	});
+	// extra mouse over
+	$('td').mouseover(function () {
+	    $(this).siblings().css('background-color', '#EAD575');
+	    var ind = $(this).index();
+	    $('td:nth-child(' + (ind + 1) + ')').css('background-color', '#EAD575');
+	});
+	$('td').mouseleave(function () {
+	    $(this).siblings().css('background-color', '');
+	    var ind = $(this).index();
+	    $('td:nth-child(' + (ind + 1) + ')').css('background-color', '');
+	});
+
+</script>
+<!-- Minified JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+<!-- my JavaScript -->
+<script src="js/script.js"></script>
+</body>
+</html>
