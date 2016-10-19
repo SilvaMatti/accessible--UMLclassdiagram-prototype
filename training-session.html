@@ -7,7 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 
-	<title>Bootstrap</title>
+	<title>Accessible Class diagram</title>
+
 </head>
 <body>
 <!-- progress bar-->
@@ -17,47 +18,283 @@
 		<div class="progress-bar progress-bar-success" style="width: 25%">
 	    	1/4
 	  	</div>
-	  	<!-- 
-	  	<div class="progress-bar progress-bar-warning" style="width: 33.3%">
-	    	<span class="sr-only">20% Complete (warning)</span>
-	 	</div>
-	  	<div class="progress-bar progress-bar-danger" style="width: 33.3%">
-	    	<span class="sr-only">10% Complete (danger)</span>
-	  	</div>
-	  	-->
 	</div>
 
 
 <!-- images -->
-	<div class="row">
-		<section class="col-md-3">
-			<img class="icon" src="images/training.png">
-			<b>Training Session</b>
-		</section>
-		<section class="col-md-3">
-			<img class="icon" src="images/uml-512.png">
-			<b>First Session</b>
-		</section>
-		<section class="col-md-3">
-			<img class="icon" src="images/uml-512.png">
-			<b>Second Session</b>
-		</section>
-		<section class="col-md-3">
-			<img class="icon" src="images/logout-128.png">
-			<b>Debriefing Session</b>
-		</section>
+	<div class="focusable" tabindex="-1">
+		<div class="row">
+			<section class="col-md-3 focusable"  id="unscripted">
+				<img class="icon" src="images/training.png">
+				<b>Training Session</b>
+			</section>
+			<section class="col-md-3" id="scripted">
+				<img class="icon" src="images/uml-512.png">
+				<b>First Session</b>
+			</section>
+			</section>
+			<section class="col-md-3" id="scripted1" >
+				<img class="icon" src="images/uml-512.png">
+				<b>Second Session</b>
+			</section>
+			</section>
+			<section class="col-md-3" id="scripted2">
+				<img class="icon" src="images/logout-128.png">
+				<b>Debriefing Session</b>
+			</section>
+		</div>
 	</div>
-</div>
-<!-- pager -->
-<nav>
-  <ul class="pager">
-    <li><a href="index.html">previos</a></li>
-    <li><a href="first-session.html">  Next  </a></li>
-  </ul>
-</nav>
+	<!-- Diagram table -->
+	<div class="focusable" tabindex="1">
+		<table  id = "uml" class="focusable tablegrid" tabindex="-1" border="1">
+        <tr id = "row1">
+            <td class="focusable row1 col1 col2 focused" tabindex="-1" colspan="2" ><img src="images/training-1.JPG"></td>
+        </tr>
+        <tr id="row2">
+            <td class="focusable row2 col1 col2" tabindex="-1" colspan="2"><img src="images/training-4.JPG"></td>
+        </tr>
+        <tr id = "row3">
+            <td class="focusable row3 col1" tabindex="-1"><img src="images/training-2.JPG"></td>
+            <td class="focusable row3 col2" tabindex="-1"><img src="images/training-3.JPG"></td>
 
+        </tr>
+		</table>
+	</div>
+<!-- pager -->
+	<nav>
+	  <ul class="pager">
+	    <li><a href="index.html">previos</a></li>
+	    <li><a href="first-session.html">  Next  </a></li>
+	  </ul>
+	</nav>
+</div>
 <!-- JQuery -->	
 <script src="js/jquery.min.js"></script>
+<script>
+	var nextstep = false, nextstepr = false;
+	//table length
+	var TLength = document.getElementById("uml").rows.length;
+	// init
+	$('.focused').focus();
+	// actual code
+	$(document).keydown(function(e){  
+		var colmatches = 0, rowmatches = 0, x = 0, y = 0;
+		var colArr = [], rowArr = [];
+		myArray = $(".focused").attr("class").split(' ');
+		for (var i in myArray) {
+			if (myArray[i].includes("col")){
+				colArr.push(myArray[i]);
+				colmatches++;
+			}
+			if (myArray[i].includes("row")){
+				rowArr.push(myArray[i]);
+				rowmatches++;
+			}
+		}
+	    if (e.keyCode == 37) { // left
+	        if($('.focused').prev('.focusable').length){
+	 	        if (rowmatches == 1){
+					active = $('td.focused').removeClass('focused');
+					xx = parseInt(colArr[0].match(/\d/g))-1; // col only number -1
+					yy = parseInt(rowArr[0].match(/\d/g)); // row only number 
+					$("td.focusable.col"+xx+".row"+yy).focus().addClass('focused');
+					window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
+					rowmatches = 0;
+				}
+				if (rowmatches == 2){	
+					col = parseInt(colArr[0].match(/\d/g))-1; // col only number -1
+					{
+						var yy = parseInt(rowArr[0].match(/\d/g)); // row only number
+						var nextRowMatches = 0;
+						nextArray = $("td.focusable.col"+col+".row"+yy).attr("class").split(' ');
+						for (var i in nextArray) {
+							if (nextArray[i].includes("row")){
+								rowArr.push(nextArray[i]);
+								nextRowMatches++;
+							}
+						}
+						window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
+					}
+					if(nextRowMatches == 2){
+						$('td.focused').removeClass('focused');
+						$("td.focusable.col"+col+".row"+yy).focus().addClass('focused');
+						rowmatches = 0;
+					}
+					else{
+						nextstepr = true;
+						window.alert(" rowmatches" +rowmatches );
+					}
+					nextRowMatches = 0;
+				}             	
+	        }
+	    }
+	    if (e.keyCode == 39) { // right
+	        if($('.focused').next('.focusable').length){
+	        	if (rowmatches == 1){
+					active = $('td.focused').removeClass('focused');
+					xx = parseInt(colArr[colArr.length-1].match(/\d/g))+1; // col only number +1
+					yy = parseInt(rowArr[rowArr.length-1].match(/\d/g)); // row only number 
+					$("td.focusable.col"+xx+".row"+yy).focus().addClass('focused');
+					window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
+					rowmatches = 0;
+				}
+				if (rowmatches == 2){	
+					col = parseInt(colArr[colArr.length-1].match(/\d/g))+1; // col only number
+					{
+						var yy = parseInt(rowArr[0].match(/\d/g)); // row only number
+						var nextRowMatches = 0;
+						nextArray = $("td.focusable.col"+col+".row"+yy).attr("class").split(' ');
+						for (var i in nextArray) {
+							if (nextArray[i].includes("row")) {
+								rowArr.push(nextArray[i]);
+								nextRowMatches++;
+							}
+						}
+						window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
+					}
+					if(nextRowMatches == 2){
+						$('td.focused').removeClass('focused');
+						$("td.focusable.col"+col+".row"+yy).focus().addClass('focused');
+						rowmatches = 0;
+					}
+					else {
+						nextstepr = true;
+						window.alert(" rowmatches" +rowmatches );
+					}
+					nextRowMatches = 0;
+				}
+	        }
+	    }	    
+	    //Up 38
+	    if (e.keyCode == 38) {
+	    	if (-1<$('td.focused').closest('tr').index()-1)
+    		if (colmatches == 1){
+				active = $('td.focused').removeClass('focused');
+				xx = parseInt(colArr[0].match(/\d/g)); // col only number
+				yy = parseInt(rowArr[0].match(/\d/g))-1; // row only number -1
+				$("td.focusable.col"+xx+".row"+yy).focus().addClass('focused');
+				window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx+ " colarr:"+colArr+"  rowarr:"+rowArr);
+				colmatches = 0;
+			}
+			if (colmatches == 2){
+				row = parseInt(rowArr[0].match(/\d/g))-1; // row only number -1
+				{
+					var xx = parseInt(colArr[0].match(/\d/g)); // col only number
+					var nextColmatches = 0;
+					nextArray = $("td.focusable.col"+xx+".row"+row).attr("class").split(' ');
+					for (var i in nextArray) {
+						if (nextArray[i].includes("col")){
+							colArr.push(nextArray[i]);
+							nextColmatches++;
+						}
+					}
+					window.alert(" colmatches" +colmatches + "  y " + row + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr) ;
+				}
+				if (nextColmatches ==2){
+					$('td.focused').removeClass('focused');
+					$("td.focusable.col"+xx+".row"+row).focus().addClass('focused');
+					colmatches = 0;
+				}
+				else{
+					nextstep = true;
+					window.alert(" colmatches" +colmatches + "  y " + yy );
+				}
+				nextColmatches = 0;
+			} 
+		}
+	    //down 40
+	    if (e.keyCode == 40) {
+	    	if (TLength>$('td.focused').closest('tr').index()+1){
+		    	if (colmatches == 1){
+					active = $('td.focused').removeClass('focused');
+					xx = parseInt(colArr[colArr.length-1].match(/\d/g)); // col only number
+					yy = parseInt(rowArr[rowArr.length-1].match(/\d/g))+1; // row only number +1
+					$("td.focusable.col"+xx+".row"+yy).focus().addClass('focused');
+					window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
+					colmatches = 0;
+				}
+				if (colmatches == 2) {
+					row = parseInt(rowArr[rowArr.length-1].match(/\d/g))+1; // row only number +1
+					{
+						var xx = parseInt(colArr[0].match(/\d/g)); // col only number
+						var nextColmatches = 0;
+						nextArray = $("td.focusable.col"+xx+".row"+row).attr("class").split(' ');
+						for (var i in nextArray) {
+							if (nextArray[i].includes("col")){
+								colArr.push(nextArray[i]);
+								nextColmatches++;
+							}
+						}
+						window.alert(" colmatches" +colmatches + "  y " + row + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr) ;
+					}
+					if (nextColmatches ==2){
+						$('td.focused').removeClass('focused');
+						$("td.focusable.col"+xx+".row"+row).focus().addClass('focused');
+						colmatches = 0;
+					}
+					else{
+						nextstep = true;
+						window.alert(" colmatches" +colmatches + "  y " + yy );
+					}
+					nextColmatches = 0;	
+				}
+			}
+		}
+		// 1 case there were two columns and user choose 1 , up and down
+		if (e.keyCode == 49 &&  nextstep &&  !nextstepr){
+			$('td.focused').removeClass('focused');
+			var xx = parseInt(colArr[0].match(/\d/g)); // col only number
+			$("td.focusable.col"+xx+".row"+row).focus().addClass('focused');
+			window.alert(" colmatches" +colmatches + "  y " + row + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr) ;
+			colmatches = 0;
+			nextstep = false;
+			nextstepr = false;
+		}
+		// 2 case there were two columns and user choose 2 , up and down
+		if (e.keyCode == 50 &&  nextstep &&  !nextstepr){
+			$('td.focused').removeClass('focused');
+			var xx = parseInt(colArr[colArr.length-1].match(/\d/g)); // col only number
+			$("td.focusable.col"+xx+".row"+row).focus().addClass('focused');
+			window.alert(" colmatches" +colmatches + "  y " + row + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr) ;
+			colmatches = 0;
+			nextstep = false;
+			nextstepr = false;
+		}
+		// 1 case there were two rows and user choose 1 , left and write
+		if (e.keyCode == 49 && !nextstep && nextstepr){
+			$('td.focused').removeClass('focused');
+			var yy = parseInt(rowArr[0].match(/\d/g)); // row only number
+			$("td.focusable.col"+col+".row"+yy).focus().addClass('focused');
+			window.alert(" jnfjdsfjkscolmatches" +colmatches + "  y " + yy + "  x " + col + " colarr:"+colArr+"  rowarr:"+rowArr[0].match(/\d/g)
+				) ;
+			rowmatches = 0;
+			nextstep = false;
+			nextstepr = false;
+		}
+		// 2 case there were two rows and user choose 2 , left and write
+		if (e.keyCode == 50 &&  !nextstep &&  nextstepr){
+			$('td.focused').removeClass('focused');
+			var yy = parseInt(rowArr[rowArr.length-1].match(/\d/g)); // row only number
+			$("td.focusable.col"+col+".row"+yy).focus().addClass('focused');
+			window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + col + " colarr:"+colArr+"  rowarr:"+rowArr) ;
+			rowmatches = 0;
+			nextstep = false;
+			nextstepr = false;
+		}
+	});
+	// extra mouse over
+	$('td').mouseover(function () {
+	    $(this).siblings().css('background-color', '#EAD575');
+	    var ind = $(this).index();
+	    $('td:nth-child(' + (ind + 1) + ')').css('background-color', '#EAD575');
+	});
+	$('td').mouseleave(function () {
+	    $(this).siblings().css('background-color', '');
+	    var ind = $(this).index();
+	    $('td:nth-child(' + (ind + 1) + ')').css('background-color', '');
+	});
+</script>
+
 
 <!-- Minified JavaScript -->
 <script src="js/bootstrap.min.js"></script>

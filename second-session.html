@@ -1,4 +1,4 @@
-<!-- inhereted from second-session4 and equal to 6-->
+<!-- fixing navigation from merged cell to merged cell-->
 <!-- up and down working all borders working and left and right working.. Perfect-->
 <!DOCTYPE html>
 <html lang="en">
@@ -25,8 +25,6 @@
 	 	3/4
 	 	</div>
 	</div>
-
-
 <!-- images -->
 	<div class="focusable" tabindex="-1">
 		<div class="row">
@@ -48,8 +46,7 @@
 				<img class="icon" src="images/logout-128.png">
 				<b>Debriefing Session</b>
 			</section>
-		</div>
-		
+		</div>		
 	</div>
 	<!--images-->
 	<div class="focusable" tabindex="1">
@@ -69,8 +66,7 @@
         </tr>
         <tr id = "row3">
             <td class="focusable row3 col1" tabindex="-1">&nbsp;</td>
-            <td class="focusable row3 col2" tabindex="-1">&nbsp;</td>
-            <td class="focusable row3 col3" tabindex="-1">&nbsp;</td>
+            <td class="focusable row3 col2 col3" tabindex="-1" colspan="2">&nbsp;</td>
             <td class="focusable row3 col4" tabindex="-1">&nbsp;</td>
             <td class="focusable row3 col5" tabindex="-1">&nbsp;</td>
         </tr>
@@ -91,15 +87,13 @@
         <tr id = "row6">
             <td class="focusable row6 col1" tabindex="-1">&nbsp;</td>
             <td class="focusable row6 row7 col2" tabindex="-1" rowspan="2">&nbsp;</td>
-            <td class="focusable row6 col3" tabindex="-1">&nbsp;</td>
+            <td class="focusable row6 row7 col3" tabindex="-1" rowspan="2">&nbsp;</td>
             <td class="focusable row6 col4" tabindex="-1">&nbsp;</td>
             <td class="focusable row6 col5" tabindex="-1">&nbsp;</td>
         </tr>
         <tr id = "row7">
             <td class="focusable row7 col1" tabindex="-1">&nbsp;</td>
-            <td class="focusable row7 col3" tabindex="-1">&nbsp;</td>
-            <td class="focusable row7 col4" tabindex="-1">&nbsp;</td>
-            <td class="focusable row7 col5" tabindex="-1">&nbsp;</td>
+            <td class="focusable row7 col4 col5" tabindex="-1" colspan="2">&nbsp;</td>
         </tr>
         <tr id = "row8">
             <td class="focusable row8 col1" tabindex="-1">&nbsp;</td>
@@ -130,59 +124,23 @@
 	// init
 	$('.focused').focus();
 	// actual code
-	
 	$(document).keydown(function(e){  
 		var colmatches = 0, rowmatches = 0, x = 0, y = 0;
 		var colArr = [], rowArr = [];
 		myArray = $(".focused").attr("class").split(' ');
-			
 		for (var i in myArray) {
-			if (myArray[i].includes("col"))
-			{
+			if (myArray[i].includes("col")){
 				colArr.push(myArray[i]);
 				colmatches++;
 			}
-			if (myArray[i].includes("row"))
-			{
+			if (myArray[i].includes("row")){
 				rowArr.push(myArray[i]);
 				rowmatches++;
 			}
-  			
 		}
-		
-		/*
-		$.each(myArray, function() {
-		    colmatch = this.match(/(^|\s)col\d(\s|$)/);
-		    if (colmatch !== null) {
-		    	colmatches++;
-		    }
-		    rowmatch = this.match(/(^|\s)row\d(\s|$)/);
-		    if (rowmatch !== null) {
-		    	rowmatches++;
-		    }
-		})
-		*/
-		/*
-		//esc 27
-	     if (e.keyCode == 27) { // esc
-	        if($('.focused').parents().first('.focusable').length)
-	            $('.focused').removeClass('focused').parents().first('.focusable').focus().addClass('focused');
-	    }
-	    // enter 13
-	    if (e.keyCode == 13) { // enter
-	        if($('.focused').children().first('.focusable').length)
-	            $('.focused').removeClass('focused').children().first('.focusable').focus().addClass('focused');
-	    }
-	    */
 	    if (e.keyCode == 37) { // left
-	    /*
-	        if($('.focused').prev('.focusable').length)
-	            $('.focused').removeClass('focused').prev('.focusable').focus().addClass('focused');
-	        */
-	        if($('.focused').prev('.focusable').length)
-	        {
-	 	        if (rowmatches == 1)
-		    	{
+	        if($('.focused').prev('.focusable').length){
+	 	        if (rowmatches == 1){
 					active = $('td.focused').removeClass('focused');
 					xx = parseInt(colArr[0].match(/\d/g))-1; // col only number -1
 					yy = parseInt(rowArr[0].match(/\d/g)); // row only number 
@@ -190,39 +148,74 @@
 					window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
 					rowmatches = 0;
 				}
-				if (rowmatches == 2) {
-					nextstepr = true;
-					col = parseInt(colArr[0].match(/\d/g))-1; // col only number
-					window.alert(" rowmatches" +rowmatches );
-				}       	
+				if (rowmatches == 2){	
+					col = parseInt(colArr[0].match(/\d/g))-1; // col only number -1
+					{
+						var yy = parseInt(rowArr[0].match(/\d/g)); // row only number
+						var nextRowMatches = 0;
+						nextArray = $("td.focusable.col"+col+".row"+yy).attr("class").split(' ');
+						for (var i in nextArray) {
+							if (nextArray[i].includes("row")){
+								rowArr.push(nextArray[i]);
+								nextRowMatches++;
+							}
+						}
+						window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
+					}
+					if(nextRowMatches == 2){
+						$('td.focused').removeClass('focused');
+						$("td.focusable.col"+col+".row"+yy).focus().addClass('focused');
+						rowmatches = 0;
+					}
+					else{
+						nextstepr = true;
+						window.alert(" rowmatches" +rowmatches );
+					}
+					nextRowMatches = 0;
+				}             	
 	        }
 	    }
 	    if (e.keyCode == 39) { // right
-	        if($('.focused').next('.focusable').length)
-	        {
-	        	if (rowmatches == 1)
-		    	{
+	        if($('.focused').next('.focusable').length){
+	        	if (rowmatches == 1){
 					active = $('td.focused').removeClass('focused');
 					xx = parseInt(colArr[colArr.length-1].match(/\d/g))+1; // col only number +1
-					yy = parseInt(rowArr[colArr.length-1].match(/\d/g)); // row only number 
+					yy = parseInt(rowArr[rowArr.length-1].match(/\d/g)); // row only number 
 					$("td.focusable.col"+xx+".row"+yy).focus().addClass('focused');
 					window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
 					rowmatches = 0;
 				}
-				if (rowmatches == 2) {
-					nextstepr = true;
+				if (rowmatches == 2){	
 					col = parseInt(colArr[colArr.length-1].match(/\d/g))+1; // col only number
-					window.alert(" rowmatches" +rowmatches );
-				}      
-	            
+					{
+						var yy = parseInt(rowArr[0].match(/\d/g)); // row only number
+						var nextRowMatches = 0;
+						nextArray = $("td.focusable.col"+col+".row"+yy).attr("class").split(' ');
+						for (var i in nextArray) {
+							if (nextArray[i].includes("row")) {
+								rowArr.push(nextArray[i]);
+								nextRowMatches++;
+							}
+						}
+						window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
+					}
+					if(nextRowMatches == 2){
+						$('td.focused').removeClass('focused');
+						$("td.focusable.col"+col+".row"+yy).focus().addClass('focused');
+						rowmatches = 0;
+					}
+					else {
+						nextstepr = true;
+						window.alert(" rowmatches" +rowmatches );
+					}
+					nextRowMatches = 0;
+				}
 	        }
 	    }	    
 	    //Up 38
-	    if (e.keyCode == 38) 
-	    {
+	    if (e.keyCode == 38) {
 	    	if (-1<$('td.focused').closest('tr').index()-1)
-    		if (colmatches == 1)
-			{
+    		if (colmatches == 1){
 				active = $('td.focused').removeClass('focused');
 				xx = parseInt(colArr[0].match(/\d/g)); // col only number
 				yy = parseInt(rowArr[0].match(/\d/g))-1; // row only number -1
@@ -231,29 +224,67 @@
 				colmatches = 0;
 			}
 			if (colmatches == 2){
-				nextstep = true;
 				row = parseInt(rowArr[0].match(/\d/g))-1; // row only number -1
-				window.alert(" colmatches" +colmatches + "  y " + yy );
+				{
+					var xx = parseInt(colArr[0].match(/\d/g)); // col only number
+					var nextColmatches = 0;
+					nextArray = $("td.focusable.col"+xx+".row"+row).attr("class").split(' ');
+					for (var i in nextArray) {
+						if (nextArray[i].includes("col")){
+							colArr.push(nextArray[i]);
+							nextColmatches++;
+						}
+					}
+					window.alert(" colmatches" +colmatches + "  y " + row + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr) ;
+				}
+				if (nextColmatches ==2){
+					$('td.focused').removeClass('focused');
+					$("td.focusable.col"+xx+".row"+row).focus().addClass('focused');
+					colmatches = 0;
+				}
+				else{
+					nextstep = true;
+					window.alert(" colmatches" +colmatches + "  y " + yy );
+				}
+				nextColmatches = 0;
 			} 
 		}
 	    //down 40
 	    if (e.keyCode == 40) {
-	    	if (TLength>$('td.focused').closest('tr').index()+1)
-	    	{
-	    	if (colmatches == 1)
-	    	{
-				active = $('td.focused').removeClass('focused');
-				xx = parseInt(colArr[colArr.length-1].match(/\d/g)); // col only number
-				yy = parseInt(rowArr[rowArr.length-1].match(/\d/g))+1; // row only number +1
-				$("td.focusable.col"+xx+".row"+yy).focus().addClass('focused');
-				window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
-				colmatches = 0;
-			}
-			if (colmatches == 2) {
-				nextstep = true;
-				row = parseInt(rowArr[rowArr.length-1].match(/\d/g))+1; // row only number +1
-				window.alert(" colmatches" +colmatches + "  y " + yy );
-			}
+	    	if (TLength>$('td.focused').closest('tr').index()+1){
+		    	if (colmatches == 1){
+					active = $('td.focused').removeClass('focused');
+					xx = parseInt(colArr[colArr.length-1].match(/\d/g)); // col only number
+					yy = parseInt(rowArr[rowArr.length-1].match(/\d/g))+1; // row only number +1
+					$("td.focusable.col"+xx+".row"+yy).focus().addClass('focused');
+					window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
+					colmatches = 0;
+				}
+				if (colmatches == 2) {
+					row = parseInt(rowArr[rowArr.length-1].match(/\d/g))+1; // row only number +1
+					{
+						var xx = parseInt(colArr[0].match(/\d/g)); // col only number
+						var nextColmatches = 0;
+						nextArray = $("td.focusable.col"+xx+".row"+row).attr("class").split(' ');
+						for (var i in nextArray) {
+							if (nextArray[i].includes("col")){
+								colArr.push(nextArray[i]);
+								nextColmatches++;
+							}
+						}
+						window.alert(" colmatches" +colmatches + "  y " + row + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr) ;
+					}
+					if (nextColmatches ==2){
+						$('td.focused').removeClass('focused');
+						$("td.focusable.col"+xx+".row"+row).focus().addClass('focused');
+						colmatches = 0;
+					}
+					else{
+						nextstep = true;
+						window.alert(" colmatches" +colmatches + "  y " + yy );
+					}
+					nextColmatches = 0;	
+				}
 			}
 		}
 		// 1 case there were two columns and user choose 1 , up and down
@@ -265,7 +296,6 @@
 			colmatches = 0;
 			nextstep = false;
 			nextstepr = false;
-
 		}
 		// 2 case there were two columns and user choose 2 , up and down
 		if (e.keyCode == 50 &&  nextstep &&  !nextstepr){
@@ -277,7 +307,6 @@
 			nextstep = false;
 			nextstepr = false;
 		}
-
 		// 1 case there were two rows and user choose 1 , left and write
 		if (e.keyCode == 49 && !nextstep && nextstepr){
 			$('td.focused').removeClass('focused');
@@ -299,7 +328,6 @@
 			nextstep = false;
 			nextstepr = false;
 		}
-
 	});
 	// extra mouse over
 	$('td').mouseover(function () {
@@ -312,8 +340,8 @@
 	    var ind = $(this).index();
 	    $('td:nth-child(' + (ind + 1) + ')').css('background-color', '');
 	});
-
 </script>
+
 <!-- Minified JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 <!-- my JavaScript -->
