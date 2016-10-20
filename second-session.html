@@ -145,7 +145,7 @@
 					xx = parseInt(colArr[0].match(/\d/g))-1; // col only number -1
 					yy = parseInt(rowArr[0].match(/\d/g)); // row only number 
 					$("td.focusable.col"+xx+".row"+yy).focus().addClass('focused');
-					window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
+					//window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
 					rowmatches = 0;
 				}
 				if (rowmatches == 2){	
@@ -160,7 +160,7 @@
 								nextRowMatches++;
 							}
 						}
-						window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
+						//window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
 					}
 					if(nextRowMatches == 2){
 						$('td.focused').removeClass('focused');
@@ -169,10 +169,13 @@
 					}
 					else{
 						nextstepr = true;
-						window.alert(" rowmatches" +rowmatches );
+						window.alert(" There are two elements to visit on the left please chose 1 or 2");
 					}
 					nextRowMatches = 0;
 				}             	
+	        }
+	        else{
+	        	window.alert("No more elements on the left")
 	        }
 	    }
 	    if (e.keyCode == 39) { // right
@@ -182,7 +185,7 @@
 					xx = parseInt(colArr[colArr.length-1].match(/\d/g))+1; // col only number +1
 					yy = parseInt(rowArr[rowArr.length-1].match(/\d/g)); // row only number 
 					$("td.focusable.col"+xx+".row"+yy).focus().addClass('focused');
-					window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
+					//window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
 					rowmatches = 0;
 				}
 				if (rowmatches == 2){	
@@ -197,7 +200,7 @@
 								nextRowMatches++;
 							}
 						}
-						window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
+						//window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
 					}
 					if(nextRowMatches == 2){
 						$('td.focused').removeClass('focused');
@@ -206,48 +209,55 @@
 					}
 					else {
 						nextstepr = true;
-						window.alert(" rowmatches" +rowmatches );
+						window.alert(" There are two elements to visit on the right please chose 1 or 2");
 					}
 					nextRowMatches = 0;
 				}
 	        }
+	        else{
+	        	window.alert("No more elements on the right")
+	        }
 	    }	    
 	    //Up 38
 	    if (e.keyCode == 38) {
-	    	if (-1<$('td.focused').closest('tr').index()-1)
-    		if (colmatches == 1){
-				active = $('td.focused').removeClass('focused');
-				xx = parseInt(colArr[0].match(/\d/g)); // col only number
-				yy = parseInt(rowArr[0].match(/\d/g))-1; // row only number -1
-				$("td.focusable.col"+xx+".row"+yy).focus().addClass('focused');
-				window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx+ " colarr:"+colArr+"  rowarr:"+rowArr);
-				colmatches = 0;
-			}
-			if (colmatches == 2){
-				row = parseInt(rowArr[0].match(/\d/g))-1; // row only number -1
-				{
-					var xx = parseInt(colArr[0].match(/\d/g)); // col only number
-					var nextColmatches = 0;
-					nextArray = $("td.focusable.col"+xx+".row"+row).attr("class").split(' ');
-					for (var i in nextArray) {
-						if (nextArray[i].includes("col")){
-							colArr.push(nextArray[i]);
-							nextColmatches++;
-						}
-					}
-					window.alert(" colmatches" +colmatches + "  y " + row + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr) ;
-				}
-				if (nextColmatches ==2){
-					$('td.focused').removeClass('focused');
-					$("td.focusable.col"+xx+".row"+row).focus().addClass('focused');
+	    	if (-1<$('td.focused').closest('tr').index()-1){
+	    		if (colmatches == 1){
+					active = $('td.focused').removeClass('focused');
+					xx = parseInt(colArr[0].match(/\d/g)); // col only number
+					yy = parseInt(rowArr[0].match(/\d/g))-1; // row only number -1
+					$("td.focusable.col"+xx+".row"+yy).focus().addClass('focused');
+					//window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx+ " colarr:"+colArr+"  rowarr:"+rowArr);
 					colmatches = 0;
 				}
-				else{
-					nextstep = true;
-					window.alert(" colmatches" +colmatches + "  y " + yy );
+				if (colmatches == 2){
+					row = parseInt(rowArr[0].match(/\d/g))-1; // row only number -1
+					{
+						var xx = parseInt(colArr[0].match(/\d/g)); // col only number
+						var nextColmatches = 0;
+						nextArray = $("td.focusable.col"+xx+".row"+row).attr("class").split(' ');
+						for (var i in nextArray) {
+							if (nextArray[i].includes("col")){
+								colArr.push(nextArray[i]);
+								nextColmatches++;
+							}
+						}
+						//window.alert(" colmatches" +colmatches + "  y " + row + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr) ;
+					}
+					if (nextColmatches ==2){
+						$('td.focused').removeClass('focused');
+						$("td.focusable.col"+xx+".row"+row).focus().addClass('focused');
+						colmatches = 0;
+					}
+					else{
+						nextstep = true;
+						window.alert(" There are two elements to visit above please chose 1 or 2");
+					}
+					nextColmatches = 0;
 				}
-				nextColmatches = 0;
-			} 
+	    	}
+			else{
+	        	window.alert("No more elements above")
+	        } 
 		}
 	    //down 40
 	    if (e.keyCode == 40) {
@@ -257,7 +267,7 @@
 					xx = parseInt(colArr[colArr.length-1].match(/\d/g)); // col only number
 					yy = parseInt(rowArr[rowArr.length-1].match(/\d/g))+1; // row only number +1
 					$("td.focusable.col"+xx+".row"+yy).focus().addClass('focused');
-					window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
+					//window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
 					colmatches = 0;
 				}
 				if (colmatches == 2) {
@@ -272,7 +282,7 @@
 								nextColmatches++;
 							}
 						}
-						window.alert(" colmatches" +colmatches + "  y " + row + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr) ;
+						//window.alert(" colmatches" +colmatches + "  y " + row + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr) ;
 					}
 					if (nextColmatches ==2){
 						$('td.focused').removeClass('focused');
@@ -281,18 +291,21 @@
 					}
 					else{
 						nextstep = true;
-						window.alert(" colmatches" +colmatches + "  y " + yy );
+						window.alert(" There are two elements to visit below please chose 1 or 2");
 					}
 					nextColmatches = 0;	
 				}
 			}
+			else{
+	        	window.alert("No more elements down")
+	        }
 		}
 		// 1 case there were two columns and user choose 1 , up and down
 		if (e.keyCode == 49 &&  nextstep &&  !nextstepr){
 			$('td.focused').removeClass('focused');
 			var xx = parseInt(colArr[0].match(/\d/g)); // col only number
 			$("td.focusable.col"+xx+".row"+row).focus().addClass('focused');
-			window.alert(" colmatches" +colmatches + "  y " + row + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr) ;
+			//window.alert(" colmatches" +colmatches + "  y " + row + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr) ;
 			colmatches = 0;
 			nextstep = false;
 			nextstepr = false;
@@ -302,7 +315,7 @@
 			$('td.focused').removeClass('focused');
 			var xx = parseInt(colArr[colArr.length-1].match(/\d/g)); // col only number
 			$("td.focusable.col"+xx+".row"+row).focus().addClass('focused');
-			window.alert(" colmatches" +colmatches + "  y " + row + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr) ;
+			//window.alert(" colmatches" +colmatches + "  y " + row + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr) ;
 			colmatches = 0;
 			nextstep = false;
 			nextstepr = false;
@@ -312,8 +325,7 @@
 			$('td.focused').removeClass('focused');
 			var yy = parseInt(rowArr[0].match(/\d/g)); // row only number
 			$("td.focusable.col"+col+".row"+yy).focus().addClass('focused');
-			window.alert(" jnfjdsfjkscolmatches" +colmatches + "  y " + yy + "  x " + col + " colarr:"+colArr+"  rowarr:"+rowArr[0].match(/\d/g)
-				) ;
+			//window.alert(" jnfjdsfjkscolmatches" +colmatches + "  y " + yy + "  x " + col + " colarr:"+colArr+"  rowarr:"+rowArr[0].match(/\d/g)) ;
 			rowmatches = 0;
 			nextstep = false;
 			nextstepr = false;
@@ -323,7 +335,7 @@
 			$('td.focused').removeClass('focused');
 			var yy = parseInt(rowArr[rowArr.length-1].match(/\d/g)); // row only number
 			$("td.focusable.col"+col+".row"+yy).focus().addClass('focused');
-			window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + col + " colarr:"+colArr+"  rowarr:"+rowArr) ;
+			//window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + col + " colarr:"+colArr+"  rowarr:"+rowArr) ;
 			rowmatches = 0;
 			nextstep = false;
 			nextstepr = false;

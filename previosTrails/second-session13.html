@@ -1,3 +1,5 @@
+<!-- adding proper messeges in the tables (graph) ends -->
+<!-- up and down working all borders working and left and right working.. Perfect-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 
-	<title>Accessible Class diagram</title>
+	<title>Bootstrap</title>
 
 </head>
 <body>
@@ -16,11 +18,13 @@
 	<h1>Accessiable UML</h1>
 	<div class="progress">
 		<div class="progress-bar progress-bar-success" style="width: 25%">
-	    	1/4
 	  	</div>
+	  	<div class="progress-bar progress-bar-success" style="width: 25%">
+	 	</div>
+	 	<div class="progress-bar progress-bar-success" style="width: 25%">
+	 	3/4
+	 	</div>
 	</div>
-
-
 <!-- images -->
 	<div class="focusable" tabindex="-1">
 		<div class="row">
@@ -42,33 +46,75 @@
 				<img class="icon" src="images/logout-128.png">
 				<b>Debriefing Session</b>
 			</section>
-		</div>
+		</div>		
 	</div>
-	<!-- Diagram table -->
+	<!--images-->
 	<div class="focusable" tabindex="1">
 		<table  id = "uml" class="focusable tablegrid" tabindex="-1" border="1">
         <tr id = "row1">
-            <td class="focusable row1 col1 col2 focused" tabindex="-1" colspan="3" ><img src="images/training-1.JPG"></td>
+            <td class="focusable row1 col1  focused" tabindex="-1" empty-cells= "hide">&nbsp;</td>
+            <td class="focusable row1 col2" tabindex="-1">&nbsp;</td>
+            <td class="focusable row1 col3" tabindex="-1">&nbsp;</td>
+            <td class="focusable row1 col4" tabindex="-1">&nbsp;</td>
+            <td class="focusable row1 col5" tabindex="-1">&nbsp;</td>
         </tr>
         <tr id="row2">
-            <td class="focusable row2 col1 col2" tabindex="-1" colspan="3"><img src="images/training-4.JPG"></td>
+            <td class="focusable row2 col1" tabindex="-1">&nbsp;</td>
+            <td class="focusable row2 col2 col3" tabindex="-1" colspan="2">&nbsp;</td>
+            <td class="focusable row2 col4" tabindex="-1" >&nbsp;</td>
+            <td class="focusable row2 col5" tabindex="-1">&nbsp;</td>
         </tr>
         <tr id = "row3">
-            <td class="focusable row3 col1" tabindex="-1"><img src="images/training-2.JPG"></td>
-            <td class="" tabindex="-1" display="none">&nbsp;</td>
-            <td class="focusable row3 col2" tabindex="-1"><img src="images/training-3.JPG"></td>
-
+            <td class="focusable row3 col1" tabindex="-1">&nbsp;</td>
+            <td class="focusable row3 col2 col3" tabindex="-1" colspan="2">&nbsp;</td>
+            <td class="focusable row3 col4" tabindex="-1">&nbsp;</td>
+            <td class="focusable row3 col5" tabindex="-1">&nbsp;</td>
         </tr>
-		</table>
+        <tr id = "row4">
+            <td class="focusable row4 col1" tabindex="-1">&nbsp;</td>
+            <td class="focusable row4 col2" tabindex="-1">&nbsp;</td>
+            <td class="focusable row4 col3" tabindex="-1">&nbsp;</td>
+            <td class="focusable row4 col4" tabindex="-1">&nbsp;</td>
+            <td class="focusable row4 col5" tabindex="-1">&nbsp;</td>
+        </tr>
+        <tr id = "row5">
+            <td class="focusable row5 col1" tabindex="-1">&nbsp;</td>
+            <td class="focusable row5 col2" tabindex="-1">&nbsp;</td>
+            <td class="focusable row5 col3" tabindex="-1">&nbsp;</td>
+            <td class="focusable row5 col4" tabindex="-1">&nbsp;</td>
+            <td class="focusable row5 col5" tabindex="-1">&nbsp;</td>
+        </tr>
+        <tr id = "row6">
+            <td class="focusable row6 col1" tabindex="-1">&nbsp;</td>
+            <td class="focusable row6 row7 col2" tabindex="-1" rowspan="2">&nbsp;</td>
+            <td class="focusable row6 row7 col3" tabindex="-1" rowspan="2">&nbsp;</td>
+            <td class="focusable row6 col4" tabindex="-1">&nbsp;</td>
+            <td class="focusable row6 col5" tabindex="-1">&nbsp;</td>
+        </tr>
+        <tr id = "row7">
+            <td class="focusable row7 col1" tabindex="-1">&nbsp;</td>
+            <td class="focusable row7 col4 col5" tabindex="-1" colspan="2">&nbsp;</td>
+        </tr>
+        <tr id = "row8">
+            <td class="focusable row8 col1" tabindex="-1">&nbsp;</td>
+            <td class="focusable row8 col2" tabindex="-1">&nbsp;</td>
+            <td class="focusable row8 col3" tabindex="-1">&nbsp;</td>
+            <td class="focusable row8 col4" tabindex="-1">&nbsp;</td>
+            <td class="focusable row8 col5" tabindex="-1">&nbsp;</td>
+        </tr>
+	</table>
 	</div>
-<!-- pager -->
+
+	<!-- pager -->
 	<nav>
 	  <ul class="pager">
-	    <li><a href="index.html">previos</a></li>
-	    <li><a href="first-session.html">  Next  </a></li>
+	    <li><a href="first-session.html">Previos</a></li>
+	    <li><a href="debrief-session.html">  Next  </a></li>
 	  </ul>
 	</nav>
 </div>
+
+
 <!-- JQuery -->	
 <script src="js/jquery.min.js"></script>
 <script>
