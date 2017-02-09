@@ -68,7 +68,7 @@ var nextstep = false, nextstepr = false;
 					//window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
 					rowmatches = 0;
 				}
-				if (rowmatches == 2){	
+				if (rowmatches == 2 || rowmatches == 3){	
 					col = parseInt(colArr[colArr.length-1].match(/\d/g))+1; // col only number
 					{
 						var yy = parseInt(rowArr[0].match(/\d/g)); // row only number
