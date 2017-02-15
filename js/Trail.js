@@ -81,30 +81,35 @@
 					window.alert(col);
 				}
 				if (rowmatches == 2 || rowmatches == 3){
-					/*
+					
 					{
 						var nextRowMatches = 0;
-						nextArray = $("td.focusable.col"+col+".row"+yy).attr("class").split(' ');
-						window.alert(nextArray)
-						for (var i in nextArray) {
-							if (nextArray[i].includes("row") && nextArray[i].includes("focusable")) {
-								window.alert(nextArray[i]);
-								rowArr.push(nextArray[i]);
-								nextRowMatches++;
-							}
+						for (var j in rowArr)
+						{
+							row = parseInt(rowArr[j].match(/\d/g)); // row only number
+							nextArray = $("td.focusable.col"+col+".row"+row).attr("class").split(' ');
+							
+								if (nextArray.includes("row"+row) && nextArray.includes("focusable")) {
+									window.alert(nextArray);
+									//rowArr.push(nextArray[i]);
+									nextRowMatches++;
+								}
+				
+							//window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + col + " colarr:"+colArr+"  rowarr:"+rowArr);							
 						}
-						//window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + col + " colarr:"+colArr+"  rowarr:"+rowArr);
+
 					}
-					*/
-					window.alert(rowArr + "   "+ nextRowMatches);
+					
+					window.alert(rowArr + "  NRM "+ nextRowMatches);
 					if(nextRowMatches == 2){
+						nextstepr = true;
+						window.alert(" There are two elements to visit on the right please chose 1 or 2");
+						
+					}
+					else {
 						$('td.focused').removeClass('focused');
 						$("td.focusable.col"+col+".row"+yy).focus().addClass('focused');
 						rowmatches = 0;
-					}
-					else {
-						nextstepr = true;
-						window.alert(" There are two elements to visit on the right please chose 1 or 2");
 					}
 					nextRowMatches = 0;
 				}
