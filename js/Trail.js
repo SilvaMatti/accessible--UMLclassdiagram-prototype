@@ -61,14 +61,16 @@
 	        }
 	    }
 	    if (e.keyCode == 39 ) { // right
-	    	window.alert(colArr);
+	    	//window.alert(colArr);
 	    	col = parseInt(colArr[colArr.length-1].match(/\d/g))+1; // col only number +1
-	    	window.alert(col);
+	    	//window.alert(col);
 			yy = parseInt(rowArr[rowArr.length-1].match(/\d/g)); // row only number
 			//window.alert(parseInt($("table > tbody > tr:nth-child(2) > td").length)) //can be used for a function to find max
 			//window.alert ($('td.focused').is("td:last"));
 	        if(col <= 6){ // So wrong WRITE a FUNCTION
+	        	window.alert(rowmatches);
 	        	if (rowmatches == 1){
+	        		//window.alert("I'm in two || three :  "+ rowarr);
 	        		nextArray = $("td.col"+col+".row"+yy).attr("class").split(' ');
 	        		if (nextArray.includes("focusable")) {
 	 	        		active = $('td.focused').removeClass('focused');
@@ -78,28 +80,27 @@
 	 	        	}
 					//window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + col + " colarr:"+colArr+"  rowarr:"+rowArr);
 					rowmatches = 0;
-					window.alert(col);
+					//window.alert(col);
 				}
 				if (rowmatches == 2 || rowmatches == 3){
+					window.alert("I'm in two || three :  " + rowArr);
+					var nextRowMatches = 0;
 					
+					for (var j in rowArr)
 					{
-						var nextRowMatches = 0;
-						for (var j in rowArr)
-						{
-							row = parseInt(rowArr[j].match(/\d/g)); // row only number
-							nextArray = $("td.focusable.col"+col+".row"+row).attr("class").split(' ');
-							
-								if (nextArray.includes("row"+row) && nextArray.includes("focusable")) {
-									window.alert(nextArray);
-									//rowArr.push(nextArray[i]);
-									nextRowMatches++;
-								}
-				
-							//window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + col + " colarr:"+colArr+"  rowarr:"+rowArr);							
-						}
-
+						window.alert("rowArrJ:  "+rowArr[j])
+						row = parseInt(rowArr[j].match(/\d/g)); // row only number
+						nextArray = $("td.col"+col+".row"+row).attr("class").split(' ');
+						
+							if (nextArray.includes("row"+row) && nextArray.includes("focusable")) {
+								window.alert("nextArray:  "+nextArray);
+								//rowArr.push(nextArray[i]);
+								nextRowMatches++;
+							}
+			
+						//window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + col + " colarr:"+colArr+"  rowarr:"+rowArr);							
 					}
-					
+
 					window.alert(rowArr + "  NRM "+ nextRowMatches);
 					if(nextRowMatches == 2){
 						nextstepr = true;
