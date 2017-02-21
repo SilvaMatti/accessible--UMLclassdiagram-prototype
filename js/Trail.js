@@ -151,17 +151,17 @@
 					row = parseInt(rowArr[0].match(/\d/g))-1; // row only number -1
 					{
 						var xx = parseInt(colArr[0].match(/\d/g)); // col only number
-						var nextColmatches = 0;
+						var nextColMatches = 0;
 						nextArray = $("td.focusable.col"+xx+".row"+row).attr("class").split(' ');
 						for (var i in nextArray) {
 							if (nextArray[i].includes("col")){
 								colArr.push(nextArray[i]);
-								nextColmatches++;
+								nextColMatches++;
 							}
 						}
 						//window.alert(" colmatches" +colmatches + "  y " + row + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr) ;
 					}
-					if (nextColmatches ==2){
+					if (nextColMatches ==2){
 						$('td.focused').removeClass('focused');
 						$("td.focusable.col"+xx+".row"+row).focus().addClass('focused');
 						colmatches = 0;
@@ -170,7 +170,7 @@
 						nextstep = true;
 						window.alert(" There are two elements to visit above please chose 1 or 2");
 					}
-					nextColmatches = 0;
+					nextColMatches = 0;
 				}
 	    	}
 			else{
@@ -179,43 +179,50 @@
 		}
 	    //down 40
 	    if (e.keyCode == 40) {
-	    	if (TLength>$('td.focused').closest('tr').index()+1){
+	    	xx = parseInt(colArr[colArr.length-1].match(/\d/g)); // col only number
+			row = parseInt(rowArr[rowArr.length-1].match(/\d/g))+1; // row only number +1
+	    	if (TLength>row){
 		    	if (colmatches == 1){
-					active = $('td.focused').removeClass('focused');
-					xx = parseInt(colArr[colArr.length-1].match(/\d/g)); // col only number
-					yy = parseInt(rowArr[rowArr.length-1].match(/\d/g))+1; // row only number +1
-					$("td.focusable.col"+xx+".row"+yy).focus().addClass('focused');
-					//window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr);
+		    		nextArray = $("td.col"+xx+".row"+row).attr("class").split(' ');
+	 	        	if (nextArray.includes("focusable")) {
+						active = $('td.focused').removeClass('focused');
+						$("td.focusable.col"+xx+".row"+row).focus().addClass('focused');
+					} else {
+						window.alert("No more elements down");
+					}
+
 					colmatches = 0;
 				}
-				if (colmatches == 2) {
-					row = parseInt(rowArr[rowArr.length-1].match(/\d/g))+1; // row only number +1
-					{
-						var xx = parseInt(colArr[0].match(/\d/g)); // col only number
-						var nextColmatches = 0;
-						nextArray = $("td.focusable.col"+xx+".row"+row).attr("class").split(' ');
-						for (var i in nextArray) {
-							if (nextArray[i].includes("col")){
-								colArr.push(nextArray[i]);
-								nextColmatches++;
+				if (colmatches == 2 || colmatches == 3) {
+					var nextColMatches = 0;
+					for (var j in colArr) {
+						col = parseInt(colArr[j].match(/\d/g)); // col only number
+						nextArray = $("td.col"+col+".row"+row).attr("class").split(' ');
+						if (nextArray.includes("col"+col) && nextArray.includes("focusable")) {
+								//window.alert("nextArray:  "+nextArray);
+								//rowArr.push(nextArray[i]);
+								nextColMatches++;
+								xx = col;
 							}
-						}
-						//window.alert(" colmatches" +colmatches + "  y " + row + "  x " + xx + " colarr:"+colArr+"  rowarr:"+rowArr) ;
 					}
-					if (nextColmatches ==2){
-						$('td.focused').removeClass('focused');
-						$("td.focusable.col"+xx+".row"+row).focus().addClass('focused');
-						colmatches = 0;
-					}
-					else{
+
+					if (nextColMatches ==2){
 						nextstep = true;
 						window.alert(" There are two elements to visit below please chose 1 or 2");
 					}
-					nextColmatches = 0;	
+					else if (nextColMatches ==1) {
+						$('td.focused').removeClass('focused');
+						$("td.focusable.col"+xx+".row"+row).focus().addClass('focused');
+						colmatches = 0;
+						}
+					else {
+						window.alert("No more elements down");
+					}
+					nextColMatches = 0;	
 				}
 			}
 			else{
-	        	window.alert("No more elements down")
+	        	window.alert("No more elements down");
 	        }
 		}
 		// 1 case there were two columns and user choose 1 , up and down
