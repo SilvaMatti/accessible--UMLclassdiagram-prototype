@@ -147,7 +147,7 @@
 						active = $('td.focused').removeClass('focused');
 						$("td.focusable.col"+xx+".row"+row).focus().addClass('focused');
 					} else {
-						window.alert("No more elements down");
+						window.alert("No more elements up");
 					}
 					colmatches = 0;
 				}
@@ -174,13 +174,13 @@
 						colmatches = 0;
 						}
 					else {
-						window.alert("No more elements down");
+						window.alert("No more elements up");
 					}
 					nextColMatches = 0;
 				}
 			}
 			else{
-	        	window.alert("No more elements down");
+	        	window.alert("No more elements up");
 	        }
 		}
 	    //down 40

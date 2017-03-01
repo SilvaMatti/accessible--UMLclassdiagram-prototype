@@ -22,7 +22,7 @@
 
 
 <!-- images -->
-	<div class="focusable" tabindex="-1">
+	<div class="focusable  tablegrid" tabindex="-1">
 		<div class="row">
 			<section class="col-md-3 focusable"  id="unscripted">
 				<img class="icon" src="images/training.png">
@@ -48,9 +48,29 @@
 	<div class="focusable" tabindex="1">
 		<table  id = "uml" class="focusable tablegrid" tabindex="-1" border="1">
         <tr id = "row1">
-            <td class="focusable row1 col1 focused" tabindex="-1"><img src="images/Tsession1.JPG"></td>
-            <td class="focusable row1 col2 " tabindex="-1"><img src="images/Tsession2.JPG"></td>
-            <td class="focusable row1 col3 " tabindex="-1"><img src="images/Tsession3.JPG"></td>
+            <td class="focusable row1 col1 focused" tabindex="-1"><img src="images/Tsession1.JPG" alt="
+Class, Flight.
+attribute list: 
+Flight number: integer.
+Departure time: date.
+Flight duration: minutes.
+Departing airport: string.
+Arriving airport: string.
+operations list:
+Delay flight ( number of minutes : minutes).
+Get arrival time (null) : date."></td>
+            <td class="focusable row1 col2 " tabindex="-1"><img src="images/Tsession2.JPG" alt="
+Relationship Type: association. 
+First end, class flight: role name: assigned flights:  multiplicity value - Zero or more.
+Second end, class plane : role name : assigned plane : multiplicity value - Zero or one."></td>
+            <td class="focusable row1 col3 " tabindex="-1"><img src="images/Tsession3.JPG" alt="
+Class, Plane.
+attribute list: 
+Airplane type: string.
+Maximum distance: miles.
+Tail id : string.
+operations list:
+Null."></td>
         </tr>
 		</table>
 	</div>
@@ -66,7 +86,7 @@
 <!-- JQuery -->	
 <script src="js/jquery.min.js"></script>
 <!-- written code JavaScript -->
-<script type="text/Javascript" src="js/myscript.js"></script>
+<script type="text/Javascript" src="js/Trail.js"></script>
 <!-- Minified JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 <!-- my JavaScript -->
