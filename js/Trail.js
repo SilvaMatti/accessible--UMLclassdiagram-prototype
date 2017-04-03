@@ -4,6 +4,11 @@
 	var TLength = document.getElementById("uml").rows.length;
 	// init
 	$('.focused').focus();
+
+	//close window
+	function closeCurrentPage() { open(location, '_self').close();
+	} 
+
 	// actual code
 	$(document).keydown(function(e){  
 		var colmatches = 0, rowmatches = 0, x = 0, y = 0;
@@ -29,7 +34,7 @@
 	 	        		active = $('td.focused').removeClass('focused');
 						$("td.focusable.col"+col+".row"+yy).focus().addClass('focused');
 	 	        	} else {
-	 	        		window.alert("No more elements on the left");
+	 	        		window.alert("No more elements on the left, press Enter to continue");
 	 	        	}
 					rowmatches = 0;
 				}
@@ -55,7 +60,7 @@
 					//window.alert(rowArr + "  NRM "+ nextRowMatches);
 					if(nextRowMatches == 2){
 						nextstepr = true;
-						window.alert(" There are two elements to visit on the right please chose 1 or 2");
+						window.alert(" There are two elements to visit on the right please choose 1 or 2");
 						
 					}
 					else if (nextRowMatches == 1) {
@@ -118,7 +123,7 @@
 					//window.alert(rowArr + "  NRM "+ nextRowMatches);
 					if(nextRowMatches == 2){
 						nextstepr = true;
-						window.alert(" There are two elements to visit on the right please chose 1 or 2");
+						window.alert(" There are two elements to visit on the right please choose 1 or 2");
 						
 					}
 					else if (nextRowMatches == 1) {
@@ -166,7 +171,7 @@
 
 					if (nextColMatches ==2){
 						nextstep = true;
-						window.alert(" There are two elements to visit below please chose 1 or 2");
+						window.alert(" There are two elements to visit Up please choose 1 or 2");
 					}
 					else if (nextColMatches ==1) {
 						$('td.focused').removeClass('focused');
@@ -187,7 +192,7 @@
 	    if (e.keyCode == 40) {
 	    	xx = parseInt(colArr[colArr.length-1].match(/\d/g)); // col only number
 			row = parseInt(rowArr[rowArr.length-1].match(/\d/g))+1; // row only number +1
-	    	if (TLength>row){
+	    	if (row <= TLength){
 		    	if (colmatches == 1){
 		    		nextArray = $("td.col"+xx+".row"+row).attr("class").split(' ');
 	 	        	if (nextArray.includes("focusable")) {
@@ -214,7 +219,7 @@
 
 					if (nextColMatches ==2){
 						nextstep = true;
-						window.alert(" There are two elements to visit below please chose 1 or 2");
+						window.alert(" There are two elements to visit below please choose 1 or 2");
 					}
 					else if (nextColMatches ==1) {
 						$('td.focused').removeClass('focused');

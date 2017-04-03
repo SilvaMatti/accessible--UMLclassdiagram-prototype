@@ -50,7 +50,7 @@
 	<div class="focusable" tabindex="1">
 		<table  id = "uml" class="focusable tablegrid" tabindex="-1" border="1">
         <tr id = "row1">
-            <td class="focusable row1 col1 col2 focused" tabindex="-1" colspan="3" ><img src="images/training-1.JPG" alt="
+            <td class="focusable row1 col1 focused" tabindex="-1"  ><img src="images/training-1.JPG" alt="
 Class, Bank account.
 attribute list: 
 Owner: string.
@@ -58,9 +58,10 @@ Balance : dollars.
 operations list:
 Deposit (amount: dollars).
 Withdrawal (amount: dollars)."></td>
+ 			<td class="row1 col2 col3" colspan="2" tabindex="-1" display="none"></td>
         </tr>
         <tr id="row2">
-            <td class="focusable row2 col1 col2" tabindex="-1" colspan="3"><img src="images/training-4.JPG" alt="
+            <td class="focusable row2 col1 col2 col3" role = "option" tabindex="-1" colspan="3"><img src="images/training-4.JPG" alt="
 Relationship Type: Inheritance.
 Superclass: Bank account.
 Child class 1: savings account.
@@ -75,8 +76,8 @@ Annual interest rate : percentage.
 operations list:
 Deposit money with interest.
 withdrawal  (amount : dollars)."></td>
-            <td class="" tabindex="-1" display="none">&nbsp;</td>
-            <td class="focusable row3 col2" tabindex="-1"><img src="images/training-3.JPG" alt="
+            <td class="row3 col2" tabindex="-1" display="none">&nbsp;</td>
+            <td class="focusable row3 col3" tabindex="-1"><img src="images/training-3.JPG" alt="
 Class, checking account.
 attribute list: 
 Insufficient funds fee : dollars.
@@ -99,10 +100,8 @@ withdrawal  (amount : dollars).
 <!-- JQuery -->	
 <script src="js/jquery.min.js"></script>
 <!-- written code JavaScript -->
-<script type="text/Javascript" src="js/Trail.js"></script>
+<script type="text/Javascript" src="js/trail.js"></script>
 <!-- Minified JavaScript -->
 <script src="js/bootstrap.min.js"></script>
-<!-- my JavaScript -->
-<script src="js/script.js"></script>
 </body>
 </html>
