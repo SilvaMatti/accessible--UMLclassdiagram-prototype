@@ -51,12 +51,12 @@
 		<table  id = "uml" class="focusable tablegrid" tabindex="-1" border="1">
 		<caption>you will start at top left</caption>
         <tr id = "row1">
-            <td class="focusable row1 col1 col2 focused" tabindex="-1" colspan="2"><img src="images/Ssession/S11.JPG" alt="
+            <td class="focusable row1 col1 col2 focused" tabindex="-1" colspan="2" role="option"><img src="images/Ssession/S11.JPG" alt="
 Relationship type: Composition. 
 Aggregate end, class Customer: multiplicity value - One only.
 Other end, class shoppingcart: multiplicity value - Zero or more.
 "></td>
-            <td class="focusable row1 col3 " tabindex="-1" role = "option"><img src="images/Ssession/S13.JPG" alt="
+            <td class="focusable row1 col3 " tabindex="-1" role="option"><img src="images/Ssession/S13.JPG" alt="
 Class, customer.
 attribute list: 
 Customer name: string.
@@ -68,11 +68,11 @@ operations list:
 Register.
 Login.
 Update Profile. "></td>
-            <td class="focusable row1 col4 " tabindex="-1" role = "option"><img src="images/Ssession/S14.JPG" alt="
+            <td class="focusable row1 col4 " tabindex="-1" role="option"><img src="images/Ssession/S14.JPG" alt="
 Relationship Type: Inheritance.
 Superclass: user.
 Child class: customer."></td>
-            <td class="focusable row1 col5 " tabindex="-1"><img src="images/Ssession/S15.JPG" alt="
+            <td class="focusable row1 col5 " tabindex="-1" role="option"><img src="images/Ssession/S15.JPG" alt="
 Class, User.
 attribute list: 
 User id : string.
@@ -80,13 +80,13 @@ Password : string.
 Login status : string.
 operations list:
 Verifying Login() : bool."></td>
-            <td class="focusable row1 col6 " tabindex="-1"><img src="images/Ssession/S16.JPG" alt="
+            <td class="focusable row1 col6 " tabindex="-1" role="option"><img src="images/Ssession/S16.JPG" alt="
 Relationship Type: Inheritance.
 Superclass: user.
 Child class: Administrator."></td>
         </tr>
         <tr id = "row2">
-            <td class="focusable row2 col1 " tabindex="-1"><img src="images/Ssession/S21.JPG" alt= "
+            <td class="focusable row2 col1 " tabindex="-1" role="option"><img src="images/Ssession/S21.JPG" alt= "
 Class, Shopping Cart.
 attribute list: 
 cart id : integer.
@@ -98,14 +98,14 @@ Add Cart Item.
 Update quantity.
 View cart details.
 Check out."></td>
-            <td class="row2 col2" tabindex="-1" display="none">&nbsp;</td>
-            <td class="focusable row2 col3 " tabindex="-1"><img src="images/Ssession/S23.JPG" alt = "
+            <td class="row2 col2" tabindex="-1" display="none" >&nbsp;</td>
+            <td class="focusable row2 col3 " tabindex="-1" role="option"><img src="images/Ssession/S23.JPG" alt = "
 Relationship Type: Composition. 
 Aggregate end, class Customer: multiplicity value - One only.
 Other end, class orders: multiplicity value - Zero or more."></td>
-            <td class="row2 col4" tabindex="-1" display="none">&nbsp;</td>
-            <td class="row2 col5" tabindex="-1" display="none">&nbsp;</td>
-            <td class="focusable row2 col6 " tabindex="-1"><img src="images/Ssession/S26.JPG" alt = "
+            <td class="row2 col4" tabindex="-1" display="none" role="option">&nbsp;</td>
+            <td class="row2 col5" tabindex="-1" display="none" role="option">&nbsp;</td>
+            <td class="focusable row2 col6 " tabindex="-1" role="option"><img src="images/Ssession/S26.JPG" alt = "
 Class, Administrator.
 attribute list: 
 Admin name : string.
@@ -116,7 +116,7 @@ Update Catalog() : bool."></td>
         <tr id = "row3">
         	<td class="row3 col1" tabindex="-1" display="none">&nbsp;</td>
         	<td class="row3 col2" tabindex="-1" display="none">&nbsp;</td>
-            <td class="focusable row3 row4 row5 col3 " tabindex="-1" rowspan="3"><img src="images/Ssession/S33.JPG" alt="
+            <td class="focusable row3 row4 row5 col3 " tabindex="-1" rowspan="3" role="option"><img src="images/Ssession/S33.JPG" alt="
 Class, Orders.
 attribute list: 
 Order ID : Integer.
@@ -128,11 +128,11 @@ Status: string.
 Shipping id: string.
 operations list:
 Place Order."></td>
-            <td class="focusable row3 col4 " tabindex="-1"><img src="images/Ssession/S34.JPG" alt="
+            <td class="focusable row3 col4 " tabindex="-1" role="option"><img src="images/Ssession/S34.JPG" alt="
 Relationship Type: Composition. 
 Aggregate end, class Orders: multiplicity value - One only.
 Other end, class shipping info: multiplicity value - One only."> </td>
-            <td class="focusable row3 col5 " tabindex="-1"><img src="images/Ssession/S35.JPG" alt="
+            <td class="focusable row3 col5 " tabindex="-1" role="option"><img src="images/Ssession/S35.JPG" alt="
 Class, Shipping info.
 attribute list: 
 Shipping ID: integer.
@@ -142,7 +142,7 @@ Shipping region id: integer.
 operations list:
 Update shipping info.
 "></td>
-            <td class="row3 col6" tabindex="-1" display="none">&nbsp;</td>
+            <td class="row3 col6" tabindex="-1" display="none" role="option">&nbsp;</td>
         </tr>
         <tr id = "row4">
         	<td class="row4 col1" tabindex="-1" display="none">&nbsp;</td>
@@ -154,11 +154,11 @@ Update shipping info.
         <tr id = "row5">
         	<td class="row5 col1" tabindex="-1" display="none">&nbsp;</td>
         	<td class="row5 col2" tabindex="-1" display="none">&nbsp;</td>
-            <td class="focusable row5 col4 " tabindex="-1"><img src="images/Ssession/S54.JPG" alt="
+            <td class="focusable row5 col4 " tabindex="-1" role="option"><img src="images/Ssession/S54.JPG" alt="
 Relationship Type: Composition. 
 Aggregate end, class Orders: multiplicity value - One only.
 Other end, class Order details: multiplicity value - One only."></td>
-            <td class="focusable row5 col5 " tabindex="-1"><img src="images/Ssession/S55.JPG" alt="
+            <td class="focusable row5 col5 " tabindex="-1" role="option"><img src="images/Ssession/S55.JPG" alt="
 Class, Order details.
 attribute list: 
 Order ID: integer.

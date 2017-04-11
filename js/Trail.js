@@ -34,7 +34,7 @@
 	 	        		active = $('td.focused').removeClass('focused');
 						$("td.focusable.col"+col+".row"+yy).focus().addClass('focused');
 	 	        	} else {
-	 	        		window.alert("No more elements on the left, press Enter to continue");
+	 	        		window.alert("No more elements on the left, press Enter to continue.");
 	 	        	}
 					rowmatches = 0;
 				}
@@ -60,7 +60,7 @@
 					//window.alert(rowArr + "  NRM "+ nextRowMatches);
 					if(nextRowMatches == 2){
 						nextstepr = true;
-						window.alert(" There are two elements to visit on the right please choose 1 or 2");
+						window.alert(" There are two elements to visit on the left please choose 1 or 2");
 						
 					}
 					else if (nextRowMatches == 1) {
@@ -69,13 +69,13 @@
 						rowmatches = 0;
 					}
 					else {
-						window.alert("No more elements on the left");
+						window.alert("No more elements on the left, press Enter to continue.");
 					}
 					nextRowMatches = 0;
 				}//end of rowmatches = 2 3       	
 	        }
 	        else{ // col = 0 does not exist
-	        	window.alert("No more elements on the left")
+	        	window.alert("No more elements on the left, press Enter to continue.")
 	        }
 	    }
 	    if (e.keyCode == 39 ) { // right
@@ -94,7 +94,7 @@
 	 	        		active = $('td.focused').removeClass('focused');
 						$("td.focusable.col"+col+".row"+yy).focus().addClass('focused');	
 	 	        	} else {
-	 	        		window.alert("No more elements on the right")
+	 	        		window.alert("No more elements on the right, press Enter to continue.")
 	 	        	}
 					//window.alert(" colmatches" +colmatches + "  y " + yy + "  x " + col + " colarr:"+colArr+"  rowarr:"+rowArr);
 					rowmatches = 0;
@@ -132,13 +132,13 @@
 						rowmatches = 0;
 					}
 					else {
-						window.alert("No more elements on the left");
+						window.alert("No more elements on the right, press Enter to continue.");
 					}
 					nextRowMatches = 0;
 				}
 	        }
 	        else{
-	        	window.alert("No more elements on the right")
+	        	window.alert("No more elements on the right, press Enter to continue.")
 	        }
 	    }	    
 	    //Up 38
@@ -152,7 +152,7 @@
 						active = $('td.focused').removeClass('focused');
 						$("td.focusable.col"+xx+".row"+row).focus().addClass('focused');
 					} else {
-						window.alert("No more elements up");
+						window.alert("No more elements up, press Enter to continue.");
 					}
 					colmatches = 0;
 				}
@@ -179,13 +179,13 @@
 						colmatches = 0;
 						}
 					else {
-						window.alert("No more elements up");
+						window.alert("No more elements up, press Enter to continue.");
 					}
 					nextColMatches = 0;
 				}
 			}
 			else{
-	        	window.alert("No more elements up");
+	        	window.alert("No more elements up, press Enter to continue.");
 	        }
 		}
 	    //down 40
@@ -199,7 +199,7 @@
 						active = $('td.focused').removeClass('focused');
 						$("td.focusable.col"+xx+".row"+row).focus().addClass('focused');
 					} else {
-						window.alert("No more elements down");
+						window.alert("No more elements down, press Enter to continue.");
 					}
 
 					colmatches = 0;
@@ -227,13 +227,13 @@
 						colmatches = 0;
 						}
 					else {
-						window.alert("No more elements down");
+						window.alert("No more elements down, press Enter to continue.");
 					}
 					nextColMatches = 0;	
 				}
 			}
 			else{
-	        	window.alert("No more elements down");
+	        	window.alert("No more elements down, press Enter to continue.");
 	        }
 		}
 		// 1 case there were two columns and user choose 1 , up and down
