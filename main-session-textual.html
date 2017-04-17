@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<title>Bootstrap</title>
+</head>
+<body>
+<!-- progress bar-->
+<div class="services container">
+	<h1>Accessiable UML</h1>
+	<div class="progress">
+		<div class="progress-bar progress-bar-success" style="width: 25%">
+	  	</div>
+	  	<div class="progress-bar progress-bar-success" style="width: 25%">
+	 	</div>
+	 	<div class="progress-bar progress-bar-success" style="width: 25%">
+	 	</div>
+	  	<div class="progress-bar progress-bar-success" style="width: 25%">
+	    	4/4
+	  	</div>
+	</div>
+
+
+<!-- images -->
+	<div class="row">
+		<section class="col-md-3">
+			<img class="icon" src="images/training.png">
+			<b>First Training Session</b>
+		</section>
+		<section class="col-md-3">
+			<img class="icon" src="images/uml-512.png">
+			<b>Second Training Session</b>
+		</section>
+		<section class="col-md-3">
+			<img class="icon" src="images/uml-512.png">
+			<b>Main Session Diagram</b>
+		</section>
+		<section class="col-md-3">
+			<img class="icon" src="images/logout-128.png">
+			<b>Main Session Textual</b>
+		</section>
+	</div>
+</div>
+<div class="focusable" tabindex="1">
+<ul>
+	<li>Class, Bank.
+	Attribute list: 
+	Bank ID: Integer.
+	Name: String.
+	Location: String.
+	Operations list:
+	null.
+	</li>
+	<li>Relationship Type:  association.
+	First end, class bank: multiplicity value – 1.
+	Second End, class teller: multiplicity value – one or more. 
+	</li>
+	<li>Class, Teller.
+	Attribute list: 
+	Id: integer.
+	Name: String.
+	Operations list:
+	Collect money.
+	Open account.
+	Close account.
+	Loan request.
+	Provide Info.
+	Issue card.
+	</li>
+	<li>Relationship Type:  association. 
+	First end, class bank: multiplicity value – 1.
+	Second End, class Customer: multiplicity value – one or more. 
+	</li>
+	<li>Class, Customer.
+	Attribute list: 
+	ID: integer.
+	Name: String.
+	Address: String.
+	Phone No: integer.
+	Acct. No. : integer.
+	Operations list:
+	General inquiry.
+	Deposit money.
+	Withdraw money.
+	Open account.
+	Close account.
+	Apply for Loan.
+	Request card.
+	</li>
+	<li>Relationship Type:  association.
+	First end, class Customer: multiplicity value – one or more.
+	Second End, class Teller: multiplicity value – one or more.
+	</li>
+	<li>Relationship Type:  association.
+	First end, class Customer: multiplicity value – one.
+	Second End, class Account: multiplicity value – one or more.
+	</li>
+	<li>Class, Account.
+	Attribute list: 
+	Id: integer.
+	Customer Id: integer.
+	Operations list:
+	Null.
+	</li>
+	<li>Relationship Type:  Inheritance . 
+	Super class: Account.
+	Child class: checking
+	</li>
+	<li>Class, Checking.
+	attribute list: 
+	Id: integer.
+	Customer Id: integer.
+	operations list:
+	Null.
+	</li>
+	<li>Relationship Type:  Inheritance. 
+	Super class: Account.
+	Child class: Savings.
+	</li>
+	<li>Class, Savings.
+	attribute list: 
+	Id: integer.
+	Customer Id: integer.
+	operations list:
+	Null.
+	</li>
+	<li>Relationship Type:  association.
+	First end, class Customer: multiplicity value – one.
+	Second End, class Loan: multiplicity value – zero or more.
+	</li>
+	<li>Class, Loan.
+	Attribute list: 
+	Id: integer.
+	Type: string.
+	Account ID: integer.
+	Customer Id: integer.
+	Operations list:
+	Null.
+	</li>
+</ul>
+</div>
+<!-- pager -->
+<nav>
+  <ul class="pager">
+    <li><a href="main-session-diagram.html">previos</a></li>
+    <li><a href="debrief-session.html">  Finish  </a></li>
+  </ul>
+</nav>
+
+<!-- JQuery -->	
+<script src="js/jquery.min.js"></script>
+<!-- Minified JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+<!-- my JavaScript -->
+<script src="js/script.js"></script>
+</body>
+</html>
